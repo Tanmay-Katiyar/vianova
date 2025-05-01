@@ -6,7 +6,7 @@ import DestinationCard from '@/components/DestinationCard';
 import FilterSidebar from '@/components/FilterSidebar';
 import SortDropdown from '@/components/SortDropdown';
 import ChatbotButton from '@/components/ChatbotButton';
-import MoodRecommender from '@/components/MoodRecommender';
+import TravelQuiz from '@/components/TravelQuiz';
 import { 
   getFilteredDestinations, 
   categories, 
@@ -54,18 +54,18 @@ const Destinations = () => {
   return (
     <div className="min-h-screen flex flex-col">
       <Navbar />
-      <main className="flex-1 pt-24 pb-12">
+      <main className="flex-1 pt-24 pb-12 bg-background">
         <div className="container mx-auto px-4">
           <div className="mb-8">
-            <h1 className="text-3xl md:text-4xl font-bold mb-2 text-travel-secondary">Discover Amazing Destinations</h1>
+            <h1 className="text-3xl md:text-4xl font-bold mb-2 text-secondary bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">Discover Amazing Destinations</h1>
             <p className="text-muted-foreground">
               Find and book the perfect getaway from our curated selection of destinations
             </p>
           </div>
 
-          {/* Mood Recommender Section */}
-          <div className="mb-10 max-w-3xl mx-auto">
-            <MoodRecommender />
+          {/* Travel Quiz Section */}
+          <div className="mb-10 max-w-4xl mx-auto">
+            <TravelQuiz />
           </div>
 
           <div className="flex flex-col lg:flex-row gap-8">
@@ -73,7 +73,7 @@ const Destinations = () => {
             <div className="lg:hidden mb-4 flex items-center justify-between">
               <Button 
                 variant="outline" 
-                className="flex items-center gap-2 border-travel-primary/20"
+                className="flex items-center gap-2 border-primary/20"
                 onClick={() => setShowMobileFilters(!showMobileFilters)}
               >
                 <Filter size={18} />
@@ -118,13 +118,13 @@ const Destinations = () => {
 
               {destinations.length === 0 ? (
                 <div className="bg-white rounded-lg shadow-sm p-8 text-center">
-                  <h3 className="text-xl font-semibold mb-2 text-travel-secondary">No destinations found</h3>
+                  <h3 className="text-xl font-semibold mb-2 text-secondary">No destinations found</h3>
                   <p className="text-muted-foreground mb-4">
                     Try adjusting your filters to see more results
                   </p>
                   <Button 
                     onClick={resetFilters}
-                    className="bg-travel-primary hover:bg-travel-secondary"
+                    className="bg-primary hover:bg-primary/90"
                   >
                     Reset All Filters
                   </Button>

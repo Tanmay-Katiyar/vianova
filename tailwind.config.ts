@@ -64,10 +64,10 @@ export default {
 					ring: 'hsl(var(--sidebar-ring))'
 				},
 				travel: {
-					primary: '#4ECDC4',
-					secondary: '#1A535C',
-					accent: '#E8F9F8',
-					light: '#F7FFFE',
+					primary: '#5B3AFC',
+					secondary: '#111727',
+					accent: '#F0EBFF',
+					light: '#F8F5FF',
 				}
 			},
 			borderRadius: {
