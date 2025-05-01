@@ -6,6 +6,7 @@ import DestinationCard from '@/components/DestinationCard';
 import FilterSidebar from '@/components/FilterSidebar';
 import SortDropdown from '@/components/SortDropdown';
 import ChatbotButton from '@/components/ChatbotButton';
+import MoodRecommender from '@/components/MoodRecommender';
 import { 
   getFilteredDestinations, 
   categories, 
@@ -56,10 +57,15 @@ const Destinations = () => {
       <main className="flex-1 pt-24 pb-12">
         <div className="container mx-auto px-4">
           <div className="mb-8">
-            <h1 className="text-3xl md:text-4xl font-bold mb-2">Discover Amazing Destinations</h1>
+            <h1 className="text-3xl md:text-4xl font-bold mb-2 text-travel-secondary">Discover Amazing Destinations</h1>
             <p className="text-muted-foreground">
               Find and book the perfect getaway from our curated selection of destinations
             </p>
+          </div>
+
+          {/* Mood Recommender Section */}
+          <div className="mb-10 max-w-3xl mx-auto">
+            <MoodRecommender />
           </div>
 
           <div className="flex flex-col lg:flex-row gap-8">
@@ -67,7 +73,7 @@ const Destinations = () => {
             <div className="lg:hidden mb-4 flex items-center justify-between">
               <Button 
                 variant="outline" 
-                className="flex items-center gap-2"
+                className="flex items-center gap-2 border-travel-primary/20"
                 onClick={() => setShowMobileFilters(!showMobileFilters)}
               >
                 <Filter size={18} />
@@ -112,7 +118,7 @@ const Destinations = () => {
 
               {destinations.length === 0 ? (
                 <div className="bg-white rounded-lg shadow-sm p-8 text-center">
-                  <h3 className="text-xl font-semibold mb-2">No destinations found</h3>
+                  <h3 className="text-xl font-semibold mb-2 text-travel-secondary">No destinations found</h3>
                   <p className="text-muted-foreground mb-4">
                     Try adjusting your filters to see more results
                   </p>

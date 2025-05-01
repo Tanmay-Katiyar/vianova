@@ -5,83 +5,83 @@
 
 @layer base {
   :root {
-    --background: 260 33% 98%;
-    --foreground: 240 10% 20%;
+    --background: 160 33% 98%;
+    --foreground: 180 25% 15%;
 
     --card: 0 0% 100%;
-    --card-foreground: 240 10% 20%;
+    --card-foreground: 180 25% 15%;
 
     --popover: 0 0% 100%;
-    --popover-foreground: 240 10% 20%;
+    --popover-foreground: 180 25% 15%;
 
-    --primary: 258 82% 74%;
+    --primary: 173 60% 56%;
     --primary-foreground: 0 0% 100%;
 
-    --secondary: 261 36% 54%;
+    --secondary: 180 52% 24%;
     --secondary-foreground: 0 0% 100%;
 
-    --muted: 240 5% 96%;
-    --muted-foreground: 240 4% 46%;
+    --muted: 170 5% 96%;
+    --muted-foreground: 180 5% 46%;
 
-    --accent: 261 100% 97%;
-    --accent-foreground: 240 10% 20%;
+    --accent: 167 58% 94%;
+    --accent-foreground: 180 25% 15%;
 
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 210 40% 98%;
 
-    --border: 240 6% 90%;
-    --input: 240 6% 90%;
-    --ring: 258 82% 74%;
+    --border: 170 6% 90%;
+    --input: 170 6% 90%;
+    --ring: 173 60% 56%;
 
     --radius: 0.5rem;
 
     --sidebar-background: 0 0% 98%;
-    --sidebar-foreground: 240 5.3% 26.1%;
-    --sidebar-primary: 240 5.9% 10%;
+    --sidebar-foreground: 180 5.3% 26.1%;
+    --sidebar-primary: 180 5.9% 10%;
     --sidebar-primary-foreground: 0 0% 98%;
-    --sidebar-accent: 240 4.8% 95.9%;
-    --sidebar-accent-foreground: 240 5.9% 10%;
-    --sidebar-border: 220 13% 91%;
-    --sidebar-ring: 217.2 91.2% 59.8%;
+    --sidebar-accent: 180 4.8% 95.9%;
+    --sidebar-accent-foreground: 180 5.9% 10%;
+    --sidebar-border: 170 13% 91%;
+    --sidebar-ring: 173.2 91.2% 59.8%;
   }
 
   .dark {
-    --background: 240 10% 10%;
+    --background: 180 10% 10%;
     --foreground: 0 0% 98%;
 
-    --card: 240 10% 12%;
+    --card: 180 10% 12%;
     --card-foreground: 0 0% 98%;
 
-    --popover: 240 10% 12%;
+    --popover: 180 10% 12%;
     --popover-foreground: 0 0% 98%;
 
-    --primary: 258 82% 74%;
-    --primary-foreground: 240 10% 10%;
+    --primary: 173 60% 56%;
+    --primary-foreground: 180 10% 10%;
 
-    --secondary: 261 36% 54%;
+    --secondary: 180 52% 24%;
     --secondary-foreground: 0 0% 98%;
 
-    --muted: 240 5% 20%;
-    --muted-foreground: 240 5% 65%;
+    --muted: 180 5% 20%;
+    --muted-foreground: 180 5% 65%;
 
-    --accent: 261 26% 18%;
+    --accent: 173 26% 18%;
     --accent-foreground: 0 0% 98%;
 
     --destructive: 0 62.8% 30.6%;
     --destructive-foreground: 0 0% 98%;
 
-    --border: 240 5% 26%;
-    --input: 240 5% 26%;
-    --ring: 258 82% 74%;
+    --border: 180 5% 26%;
+    --input: 180 5% 26%;
+    --ring: 173 60% 56%;
 
-    --sidebar-background: 240 5.9% 10%;
-    --sidebar-foreground: 240 4.8% 95.9%;
-    --sidebar-primary: 224.3 76.3% 48%;
+    --sidebar-background: 180 5.9% 10%;
+    --sidebar-foreground: 180 4.8% 95.9%;
+    --sidebar-primary: 173.3 76.3% 48%;
     --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 240 3.7% 15.9%;
-    --sidebar-accent-foreground: 240 4.8% 95.9%;
-    --sidebar-border: 240 3.7% 15.9%;
-    --sidebar-ring: 217.2 91.2% 59.8%;
+    --sidebar-accent: 180 3.7% 15.9%;
+    --sidebar-accent-foreground: 180 4.8% 95.9%;
+    --sidebar-border: 180 3.7% 15.9%;
+    --sidebar-ring: 173.2 91.2% 59.8%;
   }
 }
 
@@ -101,19 +101,19 @@
 
 .destination-card:hover {
   transform: translateY(-8px);
-  box-shadow: 0 20px 25px -5px rgba(155, 135, 245, 0.1), 0 10px 10px -5px rgba(155, 135, 245, 0.04);
+  box-shadow: 0 20px 25px -5px rgba(78, 205, 196, 0.1), 0 10px 10px -5px rgba(78, 205, 196, 0.04);
 }
 
 .chatbot-message-user {
-  background: linear-gradient(135deg, #9b87f5 0%, #7E69AB 100%);
+  background: linear-gradient(135deg, #4ECDC4 0%, #1A535C 100%);
   color: white;
   align-self: flex-end;
   border-radius: 18px 18px 0 18px;
 }
 
 .chatbot-message-bot {
-  background-color: #F1F0FB;
-  color: #1A1F2C;
+  background-color: #F7FFFE;
+  color: #1A535C;
   align-self: flex-start;
   border-radius: 18px 18px 18px 0;
 }
