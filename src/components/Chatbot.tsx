@@ -16,6 +16,7 @@ import {
 import { Label } from "@/components/ui/label";
 import { Alert, AlertDescription } from "@/components/ui/alert"; 
 import { toast } from "sonner";
+import { ScrollArea } from "@/components/ui/scroll-area";
 import { generateTravelResponse, hasApiKey, setApiKey, getApiKey } from '@/lib/gemini-api';
 
 interface Message {
@@ -130,44 +131,46 @@ const Chatbot: React.FC<ChatbotProps> = ({ selectedDestination }) => {
             </Button>
           </div>
         </CardHeader>
-        <CardContent className="flex-1 overflow-y-auto p-4 bg-gradient-to-b from-travel-light/50 to-white">
-          <div className="flex flex-col space-y-4">
-            {messages.map((message) => (
-              <div
-                key={message.id}
-                className={`flex flex-col max-w-[80%] ${
-                  message.sender === 'user' ? 'ml-auto' : 'mr-auto'
-                } animate-fade-in`}
-              >
-                <div 
-                  className={`px-4 py-3 rounded-2xl shadow-sm ${
-                    message.sender === 'user' 
-                      ? 'chatbot-message-user' 
-                      : 'chatbot-message-bot'
-                  }`}
+        <CardContent className="flex-1 overflow-hidden p-0 bg-gradient-to-b from-travel-light/50 to-white">
+          <ScrollArea className="h-full max-h-[400px] md:max-h-[500px] w-full">
+            <div className="flex flex-col space-y-4 p-4">
+              {messages.map((message) => (
+                <div
+                  key={message.id}
+                  className={`flex flex-col max-w-[80%] ${
+                    message.sender === 'user' ? 'ml-auto' : 'mr-auto'
+                  } animate-fade-in`}
                 >
-                  {message.text}
+                  <div 
+                    className={`px-4 py-3 rounded-2xl shadow-sm ${
+                      message.sender === 'user' 
+                        ? 'chatbot-message-user' 
+                        : 'chatbot-message-bot'
+                    }`}
+                  >
+                    {message.text}
+                  </div>
+                  <span className={`text-xs text-muted-foreground mt-1 ${
+                    message.sender === 'user' ? 'text-right' : 'text-left'
+                  }`}>
+                    {formatTime(message.timestamp)}
+                  </span>
                 </div>
-                <span className={`text-xs text-muted-foreground mt-1 ${
-                  message.sender === 'user' ? 'text-right' : 'text-left'
-                }`}>
-                  {formatTime(message.timestamp)}
-                </span>
-              </div>
-            ))}
-            {isTyping && (
-              <div className="flex max-w-[80%] mr-auto animate-fade-in">
-                <div className="chatbot-message-bot px-6 py-4 rounded-2xl shadow-sm">
-                  <div className="flex space-x-2">
-                    <div className="w-2 h-2 bg-travel-primary rounded-full animate-pulse"></div>
-                    <div className="w-2 h-2 bg-travel-primary rounded-full animate-pulse" style={{animationDelay: "0.2s"}}></div>
-                    <div className="w-2 h-2 bg-travel-primary rounded-full animate-pulse" style={{animationDelay: "0.4s"}}></div>
+              ))}
+              {isTyping && (
+                <div className="flex max-w-[80%] mr-auto animate-fade-in">
+                  <div className="chatbot-message-bot px-6 py-4 rounded-2xl shadow-sm">
+                    <div className="flex space-x-2">
+                      <div className="w-2 h-2 bg-travel-primary rounded-full animate-pulse"></div>
+                      <div className="w-2 h-2 bg-travel-primary rounded-full animate-pulse" style={{animationDelay: "0.2s"}}></div>
+                      <div className="w-2 h-2 bg-travel-primary rounded-full animate-pulse" style={{animationDelay: "0.4s"}}></div>
+                    </div>
                   </div>
                 </div>
-              </div>
-            )}
-            <div ref={messagesEndRef} />
-          </div>
+              )}
+              <div ref={messagesEndRef} />
+            </div>
+          </ScrollArea>
         </CardContent>
         <CardFooter className="p-4 border-t bg-white">
           <form onSubmit={handleSend} className="flex w-full gap-2">

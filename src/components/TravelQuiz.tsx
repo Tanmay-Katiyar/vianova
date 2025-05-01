@@ -9,6 +9,7 @@ import { generateMoodBasedRecommendations, hasApiKey } from '@/lib/gemini-api';
 import { Loader2, Sparkles, ArrowRight } from 'lucide-react';
 import { Input } from '@/components/ui/input';
 import { Alert, AlertDescription } from '@/components/ui/alert';
+import { toast } from "sonner";
 
 const moods = [
   { value: "energetic", label: "Energetic & Adventure-seeking" },
@@ -82,6 +83,9 @@ const TravelQuiz = () => {
   const handleSubmit = async () => {
     if (!hasApiKey()) {
       setError("Please set your Gemini API key in the chatbot settings first.");
+      toast.error("Gemini API key required", {
+        description: "Click the chat button in the bottom right to set up your API key"
+      });
       return;
     }
     
@@ -102,6 +106,8 @@ const TravelQuiz = () => {
         preferencesText
       );
       setRecommendation(response);
+      // Automatically advance to results page
+      setStep(4);
     } catch (err) {
       setError("Failed to generate recommendations. Please try again.");
       console.error(err);
@@ -262,6 +268,12 @@ const TravelQuiz = () => {
               />
             </div>
             
+            {error && (
+              <Alert variant="destructive">
+                <AlertDescription>{error}</AlertDescription>
+              </Alert>
+            )}
+            
             <div className="flex justify-between">
               <Button variant="outline" onClick={handlePreviousStep}>
                 Back
@@ -300,7 +312,7 @@ const TravelQuiz = () => {
                 </div>
               ) : (
                 <div className="prose prose-sm max-w-none text-foreground whitespace-pre-line">
-                  {recommendation}
+                  {recommendation || "Please complete the quiz to get your personalized recommendations."}
                 </div>
               )}
             </div>
