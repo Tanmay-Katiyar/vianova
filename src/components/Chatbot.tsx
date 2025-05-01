@@ -3,6 +3,20 @@ import React, { useState, useRef, useEffect } from 'react';
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Card, CardContent, CardHeader, CardTitle, CardFooter } from "@/components/ui/card";
+import { Send, Settings, Loader2 } from "lucide-react";
+import { 
+  Dialog, 
+  DialogContent, 
+  DialogHeader, 
+  DialogTitle,
+  DialogTrigger,
+  DialogFooter,
+  DialogDescription
+} from "@/components/ui/dialog";
+import { Label } from "@/components/ui/label";
+import { Alert, AlertDescription } from "@/components/ui/alert"; 
+import { toast } from "sonner";
+import { generateTravelResponse, hasApiKey, setApiKey, getApiKey } from '@/lib/gemini-api';
 
 interface Message {
   id: number;
@@ -28,6 +42,8 @@ const Chatbot: React.FC<ChatbotProps> = ({ selectedDestination }) => {
   ]);
   const [input, setInput] = useState('');
   const [isTyping, setIsTyping] = useState(false);
+  const [apiKey, setApiKeyState] = useState<string>(getApiKey() || '');
+  const [showApiKeyDialog, setShowApiKeyDialog] = useState<boolean>(!hasApiKey());
   const messagesEndRef = useRef<HTMLDivElement>(null);
 
   const scrollToBottom = () => {
@@ -45,7 +61,7 @@ const Chatbot: React.FC<ChatbotProps> = ({ selectedDestination }) => {
     }
   }, [selectedDestination]);
 
-  const handleSend = (e: React.FormEvent) => {
+  const handleSend = async (e: React.FormEvent) => {
     e.preventDefault();
     if (input.trim() === '') return;
 
@@ -60,49 +76,16 @@ const Chatbot: React.FC<ChatbotProps> = ({ selectedDestination }) => {
     setInput('');
     setIsTyping(true);
 
-    // Simulate AI response
-    setTimeout(() => {
-      generateBotResponse(input);
+    try {
+      // Get AI response using Gemini
+      const aiResponse = await generateTravelResponse(input, selectedDestination);
+      handleBotResponse(aiResponse);
+    } catch (error) {
+      console.error("Error generating response:", error);
+      handleBotResponse("I'm having trouble connecting to my knowledge base. Please try again later.");
+    } finally {
       setIsTyping(false);
-    }, 1500);
-  };
-
-  const generateBotResponse = (userMessage: string) => {
-    const lowerCaseMessage = userMessage.toLowerCase();
-    let botResponse = '';
-
-    if (lowerCaseMessage.includes('hello') || lowerCaseMessage.includes('hi')) {
-      botResponse = "Hello there! How can I help with your travel plans today?";
-    } else if (lowerCaseMessage.includes('best time') || lowerCaseMessage.includes('when to visit')) {
-      botResponse = "The best time to visit depends on your destination. For tropical places, dry seasons are usually best. European destinations are lovely in late spring or early fall to avoid crowds. Would you like specific information about a destination?";
-    } else if (lowerCaseMessage.includes('budget') || lowerCaseMessage.includes('cheap') || lowerCaseMessage.includes('expensive')) {
-      botResponse = "If you're traveling on a budget, Southeast Asia, Eastern Europe, and parts of Latin America offer incredible experiences at lower costs. For luxury travel, consider the Maldives, Switzerland, or Japan. Would you like budget tips for a specific destination?";
-    } else if (lowerCaseMessage.includes('food') || lowerCaseMessage.includes('eat') || lowerCaseMessage.includes('restaurant')) {
-      botResponse = "Local food is one of the best ways to experience a destination! I can recommend authentic restaurants and dishes to try. Do you have a specific place in mind?";
-    } else if (lowerCaseMessage.includes('safety') || lowerCaseMessage.includes('safe')) {
-      botResponse = "Safety is an important consideration. Most popular tourist destinations are generally safe, but it's always good to research current conditions, follow local guidelines, and get proper travel insurance. Is there a specific location you're concerned about?";
-    } else if (
-      lowerCaseMessage.includes('paris') || 
-      lowerCaseMessage.includes('france')
-    ) {
-      botResponse = "Paris is known as the City of Light! Beyond the iconic Eiffel Tower and Louvre, I recommend exploring the charming neighborhoods like Montmartre and Le Marais. The best time to visit is spring (April-June) or fall (September-October). Don't miss trying authentic croissants, visiting local markets, and taking a Seine river cruise at sunset!";
-    } else if (
-      lowerCaseMessage.includes('japan') || 
-      lowerCaseMessage.includes('tokyo')
-    ) {
-      botResponse = "Japan offers an amazing blend of ancient traditions and cutting-edge modernity! Tokyo is incredibly vibrant, with districts like Shibuya and Shinjuku. Cherry blossom season (late March-early April) is spectacular but crowded. Consider visiting in fall for autumn colors. Don't miss trying ramen, visiting temples, and experiencing a traditional onsen bath!";
-    } else if (
-      lowerCaseMessage.includes('bali') || 
-      lowerCaseMessage.includes('indonesia')
-    ) {
-      botResponse = "Bali is a paradise island with beautiful beaches, lush rice terraces, and a rich spiritual culture! Ubud is the cultural heart, while areas like Seminyak and Canggu offer great beaches and dining. The dry season (April-October) is ideal. Don't miss visiting temples like Tanah Lot, trying local dishes like Babi Guling, and watching a traditional Balinese dance performance!";
-    } else if (selectedDestination) {
-      botResponse = `About ${selectedDestination}: This is a beautiful destination with unique cultural experiences and amazing sights. I'd recommend visiting the local landmarks, trying the regional cuisine, and experiencing the unique local customs. Would you like more specific information about accommodations, activities, or travel tips for ${selectedDestination}?`;
-    } else {
-      botResponse = "That's an interesting question about travel! I can provide information about destinations, travel tips, local cuisine, attractions, or help you plan your next adventure. Feel free to ask about a specific place or aspect of travel you're curious about.";
     }
-
-    handleBotResponse(botResponse);
   };
 
   const handleBotResponse = (text: string) => {
@@ -120,68 +103,137 @@ const Chatbot: React.FC<ChatbotProps> = ({ selectedDestination }) => {
     return date.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
   };
 
+  const handleSaveApiKey = () => {
+    if (!apiKey.trim()) {
+      toast.error("Please enter a valid API key");
+      return;
+    }
+    
+    setApiKey(apiKey);
+    setShowApiKeyDialog(false);
+    toast.success("API key saved successfully!");
+  };
+
   return (
-    <Card className="w-full h-full flex flex-col shadow-md overflow-hidden">
-      <CardHeader className="bg-travel-primary text-white py-4">
-        <CardTitle className="text-center">AI Travel Guide</CardTitle>
-      </CardHeader>
-      <CardContent className="flex-1 overflow-y-auto p-4">
-        <div className="flex flex-col space-y-4">
-          {messages.map((message) => (
-            <div
-              key={message.id}
-              className={`flex flex-col max-w-[80%] ${
-                message.sender === 'user' ? 'ml-auto' : 'mr-auto'
-              }`}
+    <>
+      <Card className="w-full h-full flex flex-col shadow-md overflow-hidden">
+        <CardHeader className="bg-gradient-to-r from-travel-primary to-travel-secondary text-white py-4">
+          <div className="flex justify-between items-center">
+            <CardTitle className="text-center">AI Travel Guide</CardTitle>
+            <Button 
+              variant="ghost" 
+              size="icon" 
+              onClick={() => setShowApiKeyDialog(true)}
+              className="text-white hover:bg-white/20"
             >
-              <div 
-                className={`px-4 py-3 rounded-2xl ${
-                  message.sender === 'user' 
-                    ? 'chatbot-message-user' 
-                    : 'chatbot-message-bot'
-                }`}
+              <Settings className="h-5 w-5" />
+            </Button>
+          </div>
+        </CardHeader>
+        <CardContent className="flex-1 overflow-y-auto p-4 bg-gradient-to-b from-travel-light/50 to-white">
+          <div className="flex flex-col space-y-4">
+            {messages.map((message) => (
+              <div
+                key={message.id}
+                className={`flex flex-col max-w-[80%] ${
+                  message.sender === 'user' ? 'ml-auto' : 'mr-auto'
+                } animate-fade-in`}
               >
-                {message.text}
+                <div 
+                  className={`px-4 py-3 rounded-2xl shadow-sm ${
+                    message.sender === 'user' 
+                      ? 'chatbot-message-user' 
+                      : 'chatbot-message-bot'
+                  }`}
+                >
+                  {message.text}
+                </div>
+                <span className={`text-xs text-muted-foreground mt-1 ${
+                  message.sender === 'user' ? 'text-right' : 'text-left'
+                }`}>
+                  {formatTime(message.timestamp)}
+                </span>
               </div>
-              <span className={`text-xs text-muted-foreground mt-1 ${
-                message.sender === 'user' ? 'text-right' : 'text-left'
-              }`}>
-                {formatTime(message.timestamp)}
-              </span>
-            </div>
-          ))}
-          {isTyping && (
-            <div className="flex max-w-[80%] mr-auto">
-              <div className="chatbot-message-bot px-4 py-3 rounded-2xl">
-                <div className="flex space-x-2">
-                  <div className="w-2 h-2 bg-travel-primary/50 rounded-full animate-pulse"></div>
-                  <div className="w-2 h-2 bg-travel-primary/50 rounded-full animate-pulse" style={{animationDelay: "0.2s"}}></div>
-                  <div className="w-2 h-2 bg-travel-primary/50 rounded-full animate-pulse" style={{animationDelay: "0.4s"}}></div>
+            ))}
+            {isTyping && (
+              <div className="flex max-w-[80%] mr-auto animate-fade-in">
+                <div className="chatbot-message-bot px-6 py-4 rounded-2xl shadow-sm">
+                  <div className="flex space-x-2">
+                    <div className="w-2 h-2 bg-travel-primary rounded-full animate-pulse"></div>
+                    <div className="w-2 h-2 bg-travel-primary rounded-full animate-pulse" style={{animationDelay: "0.2s"}}></div>
+                    <div className="w-2 h-2 bg-travel-primary rounded-full animate-pulse" style={{animationDelay: "0.4s"}}></div>
+                  </div>
                 </div>
               </div>
+            )}
+            <div ref={messagesEndRef} />
+          </div>
+        </CardContent>
+        <CardFooter className="p-4 border-t bg-white">
+          <form onSubmit={handleSend} className="flex w-full gap-2">
+            <Input
+              value={input}
+              onChange={(e) => setInput(e.target.value)}
+              placeholder="Ask about any destination..."
+              className="flex-1 border-travel-primary/20 focus-visible:ring-travel-primary"
+              disabled={isTyping || !hasApiKey()}
+            />
+            <Button 
+              type="submit" 
+              disabled={isTyping || input.trim() === '' || !hasApiKey()} 
+              className="bg-travel-primary hover:bg-travel-secondary transition-colors"
+            >
+              {isTyping ? (
+                <Loader2 className="h-5 w-5 animate-spin" />
+              ) : (
+                <Send className="h-5 w-5" />
+              )}
+              <span className="sr-only">Send</span>
+            </Button>
+          </form>
+        </CardFooter>
+      </Card>
+
+      <Dialog open={showApiKeyDialog} onOpenChange={setShowApiKeyDialog}>
+        <DialogContent className="sm:max-w-[425px]">
+          <DialogHeader>
+            <DialogTitle>AI API Key Required</DialogTitle>
+            <DialogDescription>
+              Enter your Gemini API key to enable the AI travel guide features.
+            </DialogDescription>
+          </DialogHeader>
+          <div className="grid gap-4 py-4">
+            <Alert className="bg-travel-light border-travel-primary/30">
+              <AlertDescription>
+                Your API key is stored locally on your device and not sent to our servers.
+              </AlertDescription>
+            </Alert>
+            <div className="grid grid-cols-4 items-center gap-4">
+              <Label htmlFor="apiKey" className="text-right">
+                API Key
+              </Label>
+              <Input
+                id="apiKey"
+                type="password"
+                value={apiKey}
+                onChange={(e) => setApiKeyState(e.target.value)}
+                className="col-span-3"
+                placeholder="Enter your Gemini API key"
+              />
             </div>
-          )}
-          <div ref={messagesEndRef} />
-        </div>
-      </CardContent>
-      <CardFooter className="p-4 border-t">
-        <form onSubmit={handleSend} className="flex w-full gap-2">
-          <Input
-            value={input}
-            onChange={(e) => setInput(e.target.value)}
-            placeholder="Ask about any destination..."
-            className="flex-1"
-          />
-          <Button 
-            type="submit" 
-            disabled={isTyping || input.trim() === ''} 
-            className="bg-travel-primary hover:bg-travel-secondary"
-          >
-            Send
-          </Button>
-        </form>
-      </CardFooter>
-    </Card>
+          </div>
+          <DialogFooter>
+            <Button 
+              type="submit" 
+              onClick={handleSaveApiKey}
+              className="bg-travel-primary hover:bg-travel-secondary"
+            >
+              Save
+            </Button>
+          </DialogFooter>
+        </DialogContent>
+      </Dialog>
+    </>
   );
 };
 

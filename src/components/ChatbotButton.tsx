@@ -22,16 +22,16 @@ const ChatbotButton: React.FC<ChatbotButtonProps> = ({ selectedDestination }) =>
     <Dialog open={isOpen} onOpenChange={setIsOpen}>
       <DialogTrigger asChild>
         <Button 
-          className="fixed bottom-6 right-6 rounded-full w-14 h-14 shadow-lg bg-travel-primary hover:bg-travel-secondary"
+          className="fixed bottom-6 right-6 rounded-full w-16 h-16 shadow-lg bg-gradient-to-r from-travel-primary to-travel-secondary hover:shadow-xl hover:scale-105 transition-all duration-300"
           size="icon"
         >
-          <MessageCircle size={24} />
+          <MessageCircle size={26} className="text-white" />
           <span className="sr-only">Open AI Travel Guide</span>
         </Button>
       </DialogTrigger>
       <DialogContent className="sm:max-w-md h-[80vh]">
         <DialogHeader>
-          <DialogTitle>AI Travel Guide</DialogTitle>
+          <DialogTitle className="text-center">AI Travel Guide</DialogTitle>
         </DialogHeader>
         <div className="h-full">
           <Chatbot selectedDestination={selectedDestination} />

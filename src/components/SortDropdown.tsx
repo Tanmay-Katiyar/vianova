@@ -7,6 +7,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
+import { SortAsc } from "lucide-react";
 
 interface SortDropdownProps {
   sortOption: string;
@@ -15,10 +16,11 @@ interface SortDropdownProps {
 
 const SortDropdown: React.FC<SortDropdownProps> = ({ sortOption, setSortOption }) => {
   return (
-    <div className="flex items-center gap-2">
+    <div className="flex items-center gap-2 bg-white/80 backdrop-blur-sm p-2 rounded-lg shadow-sm">
+      <SortAsc className="h-4 w-4 text-travel-secondary" />
       <span className="text-sm text-muted-foreground whitespace-nowrap">Sort by:</span>
       <Select value={sortOption} onValueChange={setSortOption}>
-        <SelectTrigger className="w-[180px] bg-white">
+        <SelectTrigger className="w-[180px] bg-white border-travel-primary/20 focus:ring-travel-primary">
           <SelectValue placeholder="Sort by" />
         </SelectTrigger>
         <SelectContent>
