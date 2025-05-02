@@ -13,9 +13,9 @@ const FeaturedDestinations = () => {
     <section className="py-16 bg-white">
       <div className="container mx-auto px-4">
         <div className="text-center mb-12">
-          <h2 className="text-3xl md:text-4xl font-bold mb-4">Featured Destinations</h2>
+          <h2 className="text-3xl md:text-4xl font-bold mb-4">Featured Indian Destinations</h2>
           <p className="text-muted-foreground max-w-2xl mx-auto">
-            Explore our hand-picked selection of the most amazing places to visit around the world.
+            Explore our hand-picked selection of the most amazing places to visit around India.
           </p>
         </div>
 
@@ -35,7 +35,7 @@ const FeaturedDestinations = () => {
 
         <div className="mt-12 text-center">
           <Button asChild className="bg-travel-primary hover:bg-travel-secondary">
-            <Link to="/destinations">View All Destinations</Link>
+            <Link to="/destinations">View All Indian Destinations</Link>
           </Button>
         </div>
       </div>

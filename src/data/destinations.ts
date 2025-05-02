@@ -1,211 +1,185 @@
+
 import { DestinationProps } from '@/components/DestinationCard';
 
 export const destinations: DestinationProps[] = [
   {
     id: "1",
-    name: "Bali Paradise Resort",
-    location: "Bali, Indonesia",
-    image: "https://images.unsplash.com/photo-1537996194471-e657df975ab4?q=80&w=1738&auto=format&fit=crop",
-    price: 120,
-    rating: 4.8,
-    category: "Beach"
-  },
-  {
-    id: "2",
-    name: "Alpine Lodge",
-    location: "Swiss Alps, Switzerland",
-    image: "https://images.unsplash.com/photo-1548588627-f978862b85e1?q=80&w=1470&auto=format&fit=crop",
-    price: 250,
-    rating: 4.9,
-    category: "Mountain"
-  },
-  {
-    id: "3",
-    name: "Tokyo Sky View",
-    location: "Tokyo, Japan",
-    image: "https://images.unsplash.com/photo-1503899036084-c55cdd92da26?q=80&w=1587&auto=format&fit=crop",
-    price: 180,
-    rating: 4.7,
-    category: "City"
-  },
-  {
-    id: "4",
-    name: "Santorini Villa",
-    location: "Santorini, Greece",
-    image: "https://images.unsplash.com/photo-1570077188670-e3a8d69ac5ff?q=80&w=1738&auto=format&fit=crop",
-    price: 320,
-    rating: 5.0,
-    category: "Beach"
-  },
-  {
-    id: "5",
-    name: "Amazon Jungle Lodge",
-    location: "Amazon, Brazil",
-    image: "https://images.unsplash.com/photo-1470071459604-3b5ec3a7fe05?q=80&w=1574&auto=format&fit=crop",
-    price: 150,
-    rating: 4.5,
-    category: "Nature"
-  },
-  {
-    id: "6",
-    name: "Paris Apartment",
-    location: "Paris, France",
-    image: "https://images.unsplash.com/photo-1522093007474-d86e9bf7ba6f?q=80&w=1664&auto=format&fit=crop",
-    price: 210,
-    rating: 4.6,
-    category: "City"
-  },
-  {
-    id: "7",
-    name: "Marrakech Riad",
-    location: "Marrakech, Morocco",
-    image: "https://images.unsplash.com/photo-1548013146-72479768bada?q=80&w=1776&auto=format&fit=crop",
-    price: 90,
-    rating: 4.4,
-    category: "Cultural"
-  },
-  {
-    id: "8",
-    name: "Grand Canyon Lodge",
-    location: "Arizona, USA",
-    image: "https://images.unsplash.com/photo-1527333656061-ca7adf608ae1?q=80&w=1769&auto=format&fit=crop",
-    price: 175,
-    rating: 4.7,
-    category: "Nature"
-  },
-  {
-    id: "9",
-    name: "Sydney Harbor View",
-    location: "Sydney, Australia",
-    image: "https://images.unsplash.com/photo-1506973035872-a4ec16b8e8d9?q=80&w=1770&auto=format&fit=crop",
-    price: 230,
-    rating: 4.8,
-    category: "City"
-  },
-  {
-    id: "10",
-    name: "Maldives Water Villa",
-    location: "Maldives",
-    image: "https://images.unsplash.com/photo-1514282401047-d79a71a590e8?q=80&w=1665&auto=format&fit=crop",
-    price: 550,
-    rating: 5.0,
-    category: "Luxury"
-  },
-  {
-    id: "11",
-    name: "African Safari Lodge",
-    location: "Serengeti, Tanzania",
-    image: "https://images.unsplash.com/photo-1523805009345-7448845a9e53?q=80&w=1772&auto=format&fit=crop",
-    price: 420,
-    rating: 4.9,
-    category: "Adventure"
-  },
-  {
-    id: "12",
-    name: "New York Loft",
-    location: "New York, USA",
-    image: "https://images.unsplash.com/photo-1522083165195-3424ed129620?q=80&w=1760&auto=format&fit=crop",
-    price: 290,
-    rating: 4.6,
-    category: "City"
-  },
-  {
-    id: "13",
-    name: "Kyoto Traditional Inn",
-    location: "Kyoto, Japan",
-    image: "https://images.unsplash.com/photo-1545569341-9eb8b30979d9?q=80&w=1770&auto=format&fit=crop",
-    price: 190,
-    rating: 4.7,
-    category: "Cultural"
-  },
-  {
-    id: "14",
-    name: "Costa Rica Eco Resort",
-    location: "Costa Rica",
-    image: "https://images.unsplash.com/photo-1596394516093-501ba68a0ba6?q=80&w=1770&auto=format&fit=crop",
-    price: 160,
-    rating: 4.8,
-    category: "Eco-friendly"
-  },
-  {
-    id: "15",
-    name: "Venice Canal House",
-    location: "Venice, Italy",
-    image: "https://images.unsplash.com/photo-1552832230-c0197dd311b5?q=80&w=1769&auto=format&fit=crop",
-    price: 280,
-    rating: 4.5,
-    category: "Cultural"
-  },
-  {
-    id: "16",
-    name: "Dubai Luxury Suite",
-    location: "Dubai, UAE",
-    image: "https://images.unsplash.com/photo-1512453979798-5ea266f8880c?q=80&w=1770&auto=format&fit=crop",
-    price: 450,
-    rating: 4.9,
-    category: "Luxury"
-  },
-  {
-    id: "17",
-    name: "Reykjavik Nature Cabin",
-    location: "Reykjavik, Iceland",
-    image: "https://images.unsplash.com/photo-1504233529578-6d46baba6d34?q=80&w=1774&auto=format&fit=crop",
-    price: 220,
-    rating: 4.6,
-    category: "Nature"
-  },
-  {
-    id: "18",
-    name: "Bangkok River House",
-    location: "Bangkok, Thailand",
-    image: "https://images.unsplash.com/photo-1508009603885-50cf7c8dd0d5?q=80&w=1650&auto=format&fit=crop",
-    price: 110,
-    rating: 4.3,
-    category: "Cultural"
-  },
-  {
-    id: "19",
     name: "Taj Lake Palace",
-    location: "Udaipur, India",
+    location: "Udaipur, Rajasthan",
     image: "https://images.unsplash.com/photo-1586183189334-1ad3dae8c9eb?q=80&w=1770&auto=format&fit=crop",
     price: 380,
     rating: 4.9,
     category: "Luxury"
   },
   {
-    id: "20",
+    id: "2",
     name: "Kerala Houseboat",
-    location: "Kerala, India",
+    location: "Alleppey, Kerala",
     image: "https://images.unsplash.com/photo-1602425224992-94b93af47d93?q=80&w=1770&auto=format&fit=crop",
     price: 140,
     rating: 4.7,
     category: "Cultural"
   },
   {
-    id: "21",
+    id: "3",
     name: "Himalayan Retreat",
-    location: "Himachal Pradesh, India",
+    location: "Shimla, Himachal Pradesh",
     image: "https://images.unsplash.com/photo-1626621341517-bbf3d9990a23?q=80&w=1770&auto=format&fit=crop",
     price: 110,
     rating: 4.6,
     category: "Mountain"
   },
   {
-    id: "22",
+    id: "4",
     name: "Golden Triangle Suite",
-    location: "Jaipur, India",
+    location: "Jaipur, Rajasthan",
     image: "https://images.unsplash.com/photo-1599661046289-e31897846e41?q=80&w=1770&auto=format&fit=crop",
     price: 160,
     rating: 4.5,
     category: "Cultural"
   },
   {
-    id: "23",
+    id: "5",
     name: "Goa Beach Villa",
-    location: "Goa, India",
+    location: "Calangute, Goa",
     image: "https://images.unsplash.com/photo-1543731068-7e0f5beff43a?q=80&w=1774&auto=format&fit=crop",
     price: 190,
     rating: 4.8,
+    category: "Beach"
+  },
+  {
+    id: "6",
+    name: "Taj Mahal View Hotel",
+    location: "Agra, Uttar Pradesh",
+    image: "https://images.unsplash.com/photo-1548013146-72479768bada?q=80&w=1776&auto=format&fit=crop",
+    price: 210,
+    rating: 4.6,
+    category: "Cultural"
+  },
+  {
+    id: "7",
+    name: "Mysore Palace Retreat",
+    location: "Mysore, Karnataka",
+    image: "https://images.unsplash.com/photo-1513688365411-230e609e7b12?q=80&w=1170&auto=format&fit=crop",
+    price: 120,
+    rating: 4.3,
+    category: "Cultural"
+  },
+  {
+    id: "8",
+    name: "Darjeeling Tea Estate",
+    location: "Darjeeling, West Bengal",
+    image: "https://images.unsplash.com/photo-1544233726-9f1d2b27be8b?q=80&w=1974&auto=format&fit=crop",
+    price: 175,
+    rating: 4.5,
+    category: "Nature"
+  },
+  {
+    id: "9",
+    name: "Mumbai Sea View",
+    location: "Mumbai, Maharashtra",
+    image: "https://images.unsplash.com/photo-1566552881560-0be862a7c445?q=80&w=1635&auto=format&fit=crop",
+    price: 230,
+    rating: 4.4,
+    category: "City"
+  },
+  {
+    id: "10",
+    name: "Andaman Island Resort",
+    location: "Port Blair, Andaman",
+    image: "https://images.unsplash.com/photo-1577472173765-0564722f650d?q=80&w=1974&auto=format&fit=crop",
+    price: 350,
+    rating: 4.9,
+    category: "Beach"
+  },
+  {
+    id: "11",
+    name: "Varanasi Ganges View",
+    location: "Varanasi, Uttar Pradesh",
+    image: "https://images.unsplash.com/photo-1561361058-c24cecde39e0?q=80&w=1974&auto=format&fit=crop",
+    price: 140,
+    rating: 4.6,
+    category: "Cultural"
+  },
+  {
+    id: "12",
+    name: "Delhi Heritage Hotel",
+    location: "New Delhi, Delhi",
+    image: "https://images.unsplash.com/photo-1587474260584-136574528ed5?q=80&w=2070&auto=format&fit=crop",
+    price: 190,
+    rating: 4.3,
+    category: "City"
+  },
+  {
+    id: "13",
+    name: "Coorg Coffee Estate",
+    location: "Coorg, Karnataka",
+    image: "https://images.unsplash.com/photo-1519955045385-7cdb8e07c76f?q=80&w=2070&auto=format&fit=crop",
+    price: 160,
+    rating: 4.7,
+    category: "Nature"
+  },
+  {
+    id: "14",
+    name: "Rishikesh Yoga Retreat",
+    location: "Rishikesh, Uttarakhand",
+    image: "https://images.unsplash.com/photo-1588877663280-d5570228c6d7?q=80&w=1932&auto=format&fit=crop",
+    price: 120,
+    rating: 4.8,
+    category: "Adventure"
+  },
+  {
+    id: "15",
+    name: "Khajuraho Temple View",
+    location: "Khajuraho, Madhya Pradesh",
+    image: "https://images.unsplash.com/photo-1619879298590-de12b5c01b96?q=80&w=1974&auto=format&fit=crop",
+    price: 150,
+    rating: 4.5,
+    category: "Cultural"
+  },
+  {
+    id: "16",
+    name: "Rann of Kutch Resort",
+    location: "Kutch, Gujarat",
+    image: "https://images.unsplash.com/photo-1617526738882-1ea1a1936b3e?q=80&w=1974&auto=format&fit=crop",
+    price: 200,
+    rating: 4.6,
+    category: "Adventure"
+  },
+  {
+    id: "17",
+    name: "Hampi Boulder Resort",
+    location: "Hampi, Karnataka",
+    image: "https://images.unsplash.com/photo-1590005024862-6b67679a29fb?q=80&w=1974&auto=format&fit=crop",
+    price: 140,
+    rating: 4.4,
+    category: "Historical"
+  },
+  {
+    id: "18",
+    name: "Gulmarg Ski Resort",
+    location: "Gulmarg, Kashmir",
+    image: "https://images.unsplash.com/photo-1598091383021-15ddea10925d?q=80&w=2070&auto=format&fit=crop",
+    price: 280,
+    rating: 4.8,
+    category: "Mountain"
+  },
+  {
+    id: "19",
+    name: "Munnar Tea Plantation",
+    location: "Munnar, Kerala",
+    image: "https://images.unsplash.com/photo-1602939544656-55145ae6f6c1?q=80&w=2070&auto=format&fit=crop",
+    price: 160,
+    rating: 4.7,
+    category: "Nature"
+  },
+  {
+    id: "20",
+    name: "Kovalam Beach Resort",
+    location: "Kovalam, Kerala",
+    image: "https://images.unsplash.com/photo-1580253089449-81fb864abfcb?q=80&w=2070&auto=format&fit=crop",
+    price: 220,
+    rating: 4.6,
     category: "Beach"
   }
 ];
@@ -218,26 +192,25 @@ export const categories = [
   "Cultural",
   "Adventure",
   "Luxury",
+  "Historical",
   "Eco-friendly"
 ];
 
 export const locations = [
-  "Indonesia",
-  "Switzerland",
-  "Japan",
-  "Greece",
-  "Brazil",
-  "France",
-  "Morocco",
-  "USA",
-  "Australia",
-  "Maldives",
-  "Tanzania",
-  "Italy",
-  "UAE",
-  "Iceland",
-  "Thailand",
-  "India"
+  "Rajasthan",
+  "Kerala",
+  "Himachal Pradesh",
+  "Goa",
+  "Uttar Pradesh",
+  "Karnataka",
+  "West Bengal",
+  "Maharashtra",
+  "Andaman",
+  "Delhi",
+  "Uttarakhand",
+  "Madhya Pradesh",
+  "Gujarat",
+  "Kashmir"
 ];
 
 export const getAllDestinations = () => destinations;
@@ -281,8 +254,8 @@ export const getFilteredDestinations = ({
   // Filter by location
   if (selectedLocations.length > 0) {
     filtered = filtered.filter((dest) => {
-      const destCountry = dest.location.split(', ')[1] || dest.location;
-      return selectedLocations.some((loc) => destCountry.includes(loc));
+      const destState = dest.location.split(', ')[1] || dest.location;
+      return selectedLocations.some((loc) => destState.includes(loc));
     });
   }
 
@@ -302,7 +275,7 @@ export const getFilteredDestinations = ({
       filtered.reverse();
       break;
     default:
-      // 'recommended' - no special sorting for now, could implement an algorithm later
+      // 'recommended' - no special sorting for now
       break;
   }
 

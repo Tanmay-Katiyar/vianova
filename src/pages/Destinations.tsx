@@ -16,7 +16,7 @@ import { Button } from '@/components/ui/button';
 import { Filter } from 'lucide-react';
 
 const Destinations = () => {
-  const [priceRange, setPriceRange] = useState<[number, number]>([0, 1000]);
+  const [priceRange, setPriceRange] = useState<[number, number]>([0, 500]);
   const [selectedCategories, setSelectedCategories] = useState<string[]>([]);
   const [selectedRatings, setSelectedRatings] = useState<number[]>([]);
   const [selectedLocations, setSelectedLocations] = useState<string[]>([]);
@@ -44,7 +44,7 @@ const Destinations = () => {
   }, [priceRange, selectedCategories, selectedRatings, selectedLocations, sortOption]);
 
   const resetFilters = () => {
-    setPriceRange([0, 1000]);
+    setPriceRange([0, 500]);
     setSelectedCategories([]);
     setSelectedRatings([]);
     setSelectedLocations([]);
@@ -57,9 +57,9 @@ const Destinations = () => {
       <main className="flex-1 pt-24 pb-12 bg-background">
         <div className="container mx-auto px-4">
           <div className="mb-8">
-            <h1 className="text-3xl md:text-4xl font-bold mb-2 text-secondary bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">Discover Amazing Destinations</h1>
+            <h1 className="text-3xl md:text-4xl font-bold mb-2 text-secondary bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">Discover Amazing Destinations in India</h1>
             <p className="text-muted-foreground">
-              Find and book the perfect getaway from our curated selection of destinations
+              Find and book the perfect getaway from our curated selection of Indian destinations
             </p>
           </div>
 
