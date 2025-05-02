@@ -69,22 +69,22 @@ const About = () => {
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
               {[
                 {
-                  name: "Emma Rodriguez",
+                  name: "Tanu Sharma",
                   role: "Founder & CEO",
-                  image: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?q=80&w=1376&auto=format&fit=crop"
+                  image: "https://erp.psit.ac.in/assets/img/Simages/2412436.jpg"
                 },
                 {
-                  name: "Marcus Chen",
+                  name: "Harsh Awasthi",
                   role: "Chief Travel Officer",
                   image: "https://images.unsplash.com/photo-1568602471122-7832951cc4c5?q=80&w=1470&auto=format&fit=crop"
                 },
                 {
-                  name: "Sophia Lee",
+                  name: "Vaibhav Pathak",
                   role: "AI Development Lead",
                   image: "https://images.unsplash.com/photo-1567532939604-b6b5b0db2604?q=80&w=1374&auto=format&fit=crop"
                 },
                 {
-                  name: "Alex Johnson",
+                  name: "Tanmay Katiyar",
                   role: "Head of Partnerships",
                   image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?q=80&w=1470&auto=format&fit=crop"
                 }
