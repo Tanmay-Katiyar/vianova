@@ -1,4 +1,3 @@
-
 import { DestinationProps } from '@/components/DestinationCard';
 
 export const destinations: DestinationProps[] = [
@@ -163,6 +162,51 @@ export const destinations: DestinationProps[] = [
     price: 110,
     rating: 4.3,
     category: "Cultural"
+  },
+  {
+    id: "19",
+    name: "Taj Lake Palace",
+    location: "Udaipur, India",
+    image: "https://images.unsplash.com/photo-1586183189334-1ad3dae8c9eb?q=80&w=1770&auto=format&fit=crop",
+    price: 380,
+    rating: 4.9,
+    category: "Luxury"
+  },
+  {
+    id: "20",
+    name: "Kerala Houseboat",
+    location: "Kerala, India",
+    image: "https://images.unsplash.com/photo-1602425224992-94b93af47d93?q=80&w=1770&auto=format&fit=crop",
+    price: 140,
+    rating: 4.7,
+    category: "Cultural"
+  },
+  {
+    id: "21",
+    name: "Himalayan Retreat",
+    location: "Himachal Pradesh, India",
+    image: "https://images.unsplash.com/photo-1626621341517-bbf3d9990a23?q=80&w=1770&auto=format&fit=crop",
+    price: 110,
+    rating: 4.6,
+    category: "Mountain"
+  },
+  {
+    id: "22",
+    name: "Golden Triangle Suite",
+    location: "Jaipur, India",
+    image: "https://images.unsplash.com/photo-1599661046289-e31897846e41?q=80&w=1770&auto=format&fit=crop",
+    price: 160,
+    rating: 4.5,
+    category: "Cultural"
+  },
+  {
+    id: "23",
+    name: "Goa Beach Villa",
+    location: "Goa, India",
+    image: "https://images.unsplash.com/photo-1543731068-7e0f5beff43a?q=80&w=1774&auto=format&fit=crop",
+    price: 190,
+    rating: 4.8,
+    category: "Beach"
   }
 ];
 
@@ -192,7 +236,8 @@ export const locations = [
   "Italy",
   "UAE",
   "Iceland",
-  "Thailand"
+  "Thailand",
+  "India"
 ];
 
 export const getAllDestinations = () => destinations;

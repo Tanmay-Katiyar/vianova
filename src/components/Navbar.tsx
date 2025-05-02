@@ -12,8 +12,8 @@ export default function Navbar() {
       <div className="container mx-auto px-4">
         <div className="flex justify-between items-center py-4">
           <Link to="/" className="flex items-center gap-2">
-            <span className="bg-travel-primary text-white w-10 h-10 rounded-full flex items-center justify-center font-bold text-xl">S</span>
-            <span className="font-bold text-xl">Savvy<span className="text-travel-primary">Travel</span></span>
+            <span className="bg-travel-primary text-white w-10 h-10 rounded-full flex items-center justify-center font-bold text-xl">V</span>
+            <span className="font-bold text-xl">VIANOVA</span>
           </Link>
 
           {/* Desktop Navigation */}
